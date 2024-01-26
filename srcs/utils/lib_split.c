@@ -6,11 +6,12 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:37:52 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/26 16:55:01 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/26 19:00:58 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lib_utils.h"
+#include <stdlib.h>
 
 static int	is_charset(char c, char *set)
 {
@@ -82,9 +83,7 @@ char	**lib_split(char *str, char *set)
 	size_t	i;
 
 	if (!str)
-		return ();
-	if (str_len(set) == 0)
-		return ();
+		return (NULL);
 	i = 0;
 	sent = malloc(sizeof(char *) * (nbr_words(str, set) + 1));
 	if (!sent)

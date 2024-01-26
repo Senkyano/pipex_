@@ -6,18 +6,20 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:15:35 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/26 17:22:12 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/26 18:53:49 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lib_utils.h"
+#include <unistd.h>
+#include <stddef.h>
 
 void	print_char(char c, int fd)
 {
 	write(fd, &c, 1);
 }
 
-size_t	print_char(char c)
+size_t	print_c(char c)
 {
 	write(1, &c, 1);
 	return (1);
@@ -29,7 +31,7 @@ void	print_str(char *str)
 
 	i = 0;
 	while (str[i++])
-		print_char(str[i]);
+		print_c(str[i]);
 }
 
 void	print_error(char *str)

@@ -6,11 +6,12 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:29:02 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/26 16:52:56 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/26 18:54:13 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lib_utils.h"
+#include <stdlib.h>
 
 char	*str_join(char *str1, char *str2)
 {

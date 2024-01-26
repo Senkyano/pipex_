@@ -6,7 +6,7 @@
 #    By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 19:30:36 by rihoy             #+#    #+#              #
-#    Updated: 2024/01/26 17:25:38 by rihoy            ###   ########.fr        #
+#    Updated: 2024/01/26 18:46:56 by rihoy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,24 +51,24 @@ PARS = parsing
 EXEC = exec
 
 # Fichier .c
-FILE_LIB_C =	$(SRCS)/$(LIB)/ \
+FILE_LIB_C =	$(SRCS)/$(LIB)/lib_char.c \
+			$(SRCS)/$(LIB)/lib_cmp.c \
+			$(SRCS)/$(LIB)/lib_join.c \
+			$(SRCS)/$(LIB)/lib_len.c \
+			$(SRCS)/$(LIB)/lib_split.c \
+			$(SRCS)/$(LIB)/lib_strdup.c
+#			$(SRCS)/$(LIB)/lib_ \
+			$(SRCS)/$(LIB)/lib_ \
+			$(SRCS)/$(LIB)/lib_ \
+			$(SRCS)/$(LIB)/lib_ \
 			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/
+			$(SRCS)/$(LIB)/#
 			
-FILE_PARS_C =	$(SRCS)/$(PARS)/gestion_error.c \
+#FILE_PARS_C =	$(SRCS)/$(PARS)/gestion_error.c \
 			$(SRCS)/$(PARS)/pathenv.c \
 			$(SRCS)/$(PARS)/lstcmd.c
 
-FILE_EXEC_C =	$(SRCS)/$(EXEC)/cmd_access.c \
+#FILE_EXEC_C =	$(SRCS)/$(EXEC)/cmd_access.c \
 			$(SRCS)/$(EXEC)/exec_cmd.c \
 			$(SRCS)/$(EXEC)/gestion_pipe.c
 
