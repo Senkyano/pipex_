@@ -6,14 +6,14 @@
 #    By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 19:30:36 by rihoy             #+#    #+#              #
-#    Updated: 2024/01/26 18:46:56 by rihoy            ###   ########.fr        #
+#    Updated: 2024/01/27 23:54:06 by rihoy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # **************************************************************************** #
 #Compilateur - Options
 CC = cc
-FLAGS = -Wall -Werror -Wextra -g3
+FLAGS = -Wall -Werror -Wextra -g3 #-fsanitize=address
 RM = rm -fr
 
 # Couleurs
@@ -56,20 +56,20 @@ FILE_LIB_C =	$(SRCS)/$(LIB)/lib_char.c \
 			$(SRCS)/$(LIB)/lib_join.c \
 			$(SRCS)/$(LIB)/lib_len.c \
 			$(SRCS)/$(LIB)/lib_split.c \
-			$(SRCS)/$(LIB)/lib_strdup.c
+			$(SRCS)/$(LIB)/lib_strdup.c \
+			$(SRCS)/$(LIB)/lib_free.c
 #			$(SRCS)/$(LIB)/lib_ \
 			$(SRCS)/$(LIB)/lib_ \
 			$(SRCS)/$(LIB)/lib_ \
-			$(SRCS)/$(LIB)/lib_ \
 			$(SRCS)/$(LIB)/ \
-			$(SRCS)/$(LIB)/#
+			$(SRCS)/$(LIB)/
 			
-#FILE_PARS_C =	$(SRCS)/$(PARS)/gestion_error.c \
-			$(SRCS)/$(PARS)/pathenv.c \
+FILE_PARS_C =	$(SRCS)/$(PARS)/get_path.c
+#			$(SRCS)/$(PARS)/pathenv.c \
 			$(SRCS)/$(PARS)/lstcmd.c
 
-#FILE_EXEC_C =	$(SRCS)/$(EXEC)/cmd_access.c \
-			$(SRCS)/$(EXEC)/exec_cmd.c \
+FILE_EXEC_C =	$(SRCS)/$(EXEC)/gestion_fd.c
+#			$(SRCS)/$(EXEC)/exec_cmd.c \
 			$(SRCS)/$(EXEC)/gestion_pipe.c
 
 # Fichier .o

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:37:52 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/26 19:00:58 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/27 22:46:52 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,11 @@ char	**lib_split(char *str, char *set)
 			str++;
 		if (!is_charset(*str, set) && *str)
 			sent[i] = malloc_word(str, set);
-		if (!sent[i++])
-			return (freesplit(sent), NULL);
+		if (!sent[i])
+			return (free_split(sent), NULL);
 		while (!is_charset(*str, set) && *str)
 			str++;
+		i++;
 	}
 	sent[i] = NULL;
 	return (sent);

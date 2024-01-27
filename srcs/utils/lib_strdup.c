@@ -6,11 +6,12 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:46:15 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/26 18:58:44 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/27 23:51:06 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lib_utils.h"
+#include <stdlib.h>
 
 char	*lib_strdup(char *str)
 {
@@ -46,3 +47,20 @@ char	*lib_strup(char *str)
 	new_str[i] = '\0';
 	return (new_str);
 }
+
+char	**lib_sentup(char *str)
+{
+	char	**new_sent;
+
+	if (!str)
+		return (NULL);
+	new_sent = malloc(sizeof(char *) * 2);
+	if (!new_sent)
+		return (NULL);
+	new_sent[0]= lib_strup(str);
+	if (!new_sent[0])
+		return (free(new_sent), NULL);
+	new_sent[1] = NULL;
+	return (new_sent);
+}
+
