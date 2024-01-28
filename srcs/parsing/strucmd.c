@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 22:49:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/28 20:08:52 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/28 20:13:08 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static t_lst	*info_cmd(t_data *pipex, char *argv)
 		cmd->cmd_opt = lib_split(argv, " ");
 	if (argv[0] == 0 || !cmd->cmd_opt)
 	{
-		cmd->cmd_opt = lib_sentup(" ");
+		if (argv[0] == 0)
+			cmd->cmd_opt = lib_sentup(" ");
 		if (!cmd->cmd_opt)
 			return (free(cmd), NULL);
 	}
