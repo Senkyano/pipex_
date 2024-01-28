@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:15:35 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/27 22:44:56 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/28 18:08:42 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,17 @@ void	print_error(char *str)
 	i = 0;
 	while (str[i])
 		print_char(str[i++], 2);
+}
+
+void	print_sent(char **str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		print_str(str[i]);
+		print_str("\n");
+		i++;
+	}
 }

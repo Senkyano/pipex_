@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:20:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/27 23:04:32 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/28 12:06:52 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	print_char(char c, int fd);
 size_t	print_c(char c);
 void	print_str(char *str);
 void	print_error(char *str);
+void	print_sent(char **str);
 // LEN
 size_t	str_len(char *str);
 size_t	sent_len(char **sent);

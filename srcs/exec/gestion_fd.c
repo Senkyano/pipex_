@@ -6,25 +6,44 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/27 23:55:18 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/28 19:11:46 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lib_pipex.h"
+#include "../../includes/lib_utils.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdbool.h>
+
+void	access_file(t_data *pipex, char **argv, int argc)
+{
+	pipex->out_file = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0666);
+	if (pipex->out_file == -1)
+		close_data(pipex, 1);
+	if (str_cmp(argv[1], "here_doc") == false)
+	{
+		if (access(argv[1], F_OK | R_OK) == -1)
+		{
+			print_str("Wrong infile\n");
+			close_data(pipex, 1);
+		}
+		pipex->in_file = open(argv[1], O_RDONLY);
+	}
+	open_pipe(pipex);
+}
 
 void	open_pipe(t_data *pipex)
 {
 	size_t	i;
 
-	i = 1;
+	i = 0;
 	pipex->fd = malloc(sizeof(int) * ((pipex->n_cmd - 1) * 2));
 	if (!pipex->fd)
-		close_data(pipex);
-	while (i <= pipex->n_cmd - 1)
+		close_data(pipex, 1);
+	while (i < pipex->n_cmd - 1)
 	{
 		pipe(pipex->fd + i * 2);
 		i++;

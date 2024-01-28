@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:55:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/28 00:04:03 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/28 19:08:29 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdio.h>
 
 static bool	check_condition(int	argc, const char **argv, const char **env);
 static void	init_data(t_data *pipex);
@@ -30,7 +31,12 @@ int	main(int argc, const char **argv, const char **env)
 		exit(0);
 	init_data(&pipex);
 	get_path(&pipex, (char **)env);
-	close_data(&pipex);
+	do_lst_cmd(&pipex, (char **)argv, argc);
+	access_file(&pipex, (char **)argv, argc);
+	print_lst(pipex.cmd);
+	printf("%ld\n", pipex.n_cmd);
+	close_data(&pipex, 0);
+	return (0);
 }
 
 static void	init_data(t_data *pipex)
@@ -56,7 +62,7 @@ void	free_cmd(t_data *pipex)
 	}
 }
 
-void	close_data(t_data *pipex)
+void	close_data(t_data *pipex, int ok)
 {
 	if (pipex->path_env)
 		free_split(pipex->path_env);
@@ -71,7 +77,8 @@ void	close_data(t_data *pipex)
 	}
 	if (pipex->cmd)
 		free_cmd(pipex);
-	exit(0);
+	if (ok == 1)
+		exit(0);
 }
 
 static bool	check_condition(int	argc, const char **argv, const char **env)

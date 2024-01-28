@@ -6,7 +6,7 @@
 #    By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 19:30:36 by rihoy             #+#    #+#              #
-#    Updated: 2024/01/27 23:54:06 by rihoy            ###   ########.fr        #
+#    Updated: 2024/01/28 17:44:12 by rihoy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,9 +64,9 @@ FILE_LIB_C =	$(SRCS)/$(LIB)/lib_char.c \
 			$(SRCS)/$(LIB)/ \
 			$(SRCS)/$(LIB)/
 			
-FILE_PARS_C =	$(SRCS)/$(PARS)/get_path.c
-#			$(SRCS)/$(PARS)/pathenv.c \
-			$(SRCS)/$(PARS)/lstcmd.c
+FILE_PARS_C =	$(SRCS)/$(PARS)/get_path.c \
+			$(SRCS)/$(PARS)/strucmd.c
+#			$(SRCS)/$(PARS)/lstcmd.c
 
 FILE_EXEC_C =	$(SRCS)/$(EXEC)/gestion_fd.c
 #			$(SRCS)/$(EXEC)/exec_cmd.c \

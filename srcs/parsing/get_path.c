@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 22:23:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/27 22:47:58 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/28 18:12:22 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,18 @@ static char	*go_to_path(char **env);
 void	get_path(t_data *pipex, char **env)
 {
 	char	*path;
+	size_t	i;
 
+	i = 0;
 	path = go_to_path(env);
 	if (!path)
 		exit(1);
 	pipex->path_env = lib_split(&path[5], ":");
+	while (pipex->path_env[i])
+	{
+		pipex->path_env[i] = str1_join(pipex->path_env[i], "/");
+		i++;
+	}
 }
 
 static char	*go_to_path(char **env)

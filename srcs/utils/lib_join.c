@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:29:02 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/26 18:54:13 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/28 17:52:58 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,16 @@ char	*str_join(char *str1, char *str2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (str1[i++])
+	while (str1[i])
+	{
 		new_str[i] = str1[i];
-	while (str2[j++])
+		i++;
+	}
+	while (str2[j])
+	{
 		new_str[i + j] = str2[j];
+		j++;
+	}
 	new_str[i + j] = '\0';
 	return (new_str);
 }
@@ -41,11 +47,11 @@ char	*str1_join(char *str1, char *str2)
 	new_str = malloc((str_len(str1) + str_len(str2) + 1) * sizeof(char));
 	if (!new_str)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (str1[i++])
+	i = -1;
+	j = -1;
+	while (str1[++i])
 		new_str[i] = str1[i];
-	while (str2[j++])
+	while (str2[++j])
 		new_str[i + j] = str2[j];
 	new_str[i + j] = '\0';
 	free(str1);
@@ -61,11 +67,11 @@ char	*str2_join(char *str1, char *str2)
 	new_str = malloc((str_len(str1) + str_len(str2) + 1) * sizeof(char));
 	if (!new_str)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (str1[i++])
+	i = -1;
+	j = -1;
+	while (str1[++i])
 		new_str[i] = str1[i];
-	while (str2[j++])
+	while (str2[++j])
 		new_str[i + j] = str2[j];
 	new_str[i + j] = '\0';
 	free(str2);
@@ -81,11 +87,11 @@ char	*strall_join(char *str1, char *str2)
 	new_str = malloc((str_len(str1) + str_len(str2) + 1) * sizeof(char));
 	if (!new_str)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (str1[i++])
+	i = -1;
+	j = -1;
+	while (str1[++i])
 		new_str[i] = str1[i];
-	while (str2[j++])
+	while (str2[++j])
 		new_str[i + j] = str2[j];
 	new_str[i + j] = '\0';
 	free(str2);

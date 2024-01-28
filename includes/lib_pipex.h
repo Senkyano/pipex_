@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:16:48 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/27 23:53:39 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/28 18:38:32 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ typedef	struct s_data
 
 void	get_path(t_data *pipex, char **env);
 void	open_pipe(t_data *pipex);
+void	access_file(t_data *pipex, char **argv, int argc);
 // CLOSE
 void	close_pipe(t_data *pipex);
-void	close_data(t_data *pipex);
+void	close_data(t_data *pipex, int ok);
+
+void	do_lst_cmd(t_data *pipex, char **argv, int argc);
+void	print_lst(t_lst *lst_cmd);
 
 #endif
