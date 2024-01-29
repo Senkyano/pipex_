@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:55:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/29 15:16:44 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/29 18:26:14 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ void	close_data(t_data *pipex, int ok)
 	if (pipex->cmd)
 		free_cmd(pipex);
 	if (ok == 1)
-		exit(0);
+	{
+		exit(1);
+	}
 }
 
 static bool	check_condition(int	argc, const char **argv, const char **env)

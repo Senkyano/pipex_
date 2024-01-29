@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 22:49:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/29 15:17:44 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/29 16:01:10 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static t_lst	*info_cmd(t_data *pipex, char *argv)
 	cmd = malloc(sizeof(t_lst));
 	if (!cmd)
 		return (NULL);
-	if (argv[0] != '\0')
+	if (str_good(argv) == true)
 		cmd->cmd_opt = lib_split(argv, " ");
-	if (argv[0] == 0 || !cmd->cmd_opt)
+	if (str_good(argv) == false || !cmd->cmd_opt)
 	{
-		if (argv[0] == 0)
+		if (str_good(argv) == false)
 			cmd->cmd_opt = lib_sentup(" ");
 		if (!cmd->cmd_opt)
 			return (free(cmd), NULL);
@@ -51,9 +51,14 @@ static char	**cmd_in_path(char *cmd, char **path_env)
 	i = 0;
 	while (path_env[i])
 	{
-		path_with_cmd[i] = str_join(path_env[i], cmd);
-		if (!path_with_cmd)
-			return (free(path_with_cmd), NULL);
+		if (cmd != NULL)
+		{
+			path_with_cmd[i] = str_join(path_env[i], cmd);
+			if (!path_with_cmd)
+				return (free(path_with_cmd), NULL);
+		}
+		else
+			path_with_cmd[i] = lib_strup(path_env[i]);
 		i++;
 	}
 	path_with_cmd[i] = NULL;

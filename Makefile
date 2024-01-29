@@ -6,14 +6,14 @@
 #    By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 19:30:36 by rihoy             #+#    #+#              #
-#    Updated: 2024/01/29 15:30:15 by rihoy            ###   ########.fr        #
+#    Updated: 2024/01/29 18:57:46 by rihoy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # **************************************************************************** #
 #Compilateur - Options
 CC = cc
-FLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
+FLAGS = -Wall -Werror -Wextra -g3 #-fsanitize=address
 RM = rm -fr
 
 # Couleurs
@@ -57,10 +57,10 @@ FILE_LIB_C =	$(SRCS)/$(LIB)/lib_char.c \
 			$(SRCS)/$(LIB)/lib_len.c \
 			$(SRCS)/$(LIB)/lib_split.c \
 			$(SRCS)/$(LIB)/lib_strdup.c \
-			$(SRCS)/$(LIB)/lib_free.c
+			$(SRCS)/$(LIB)/lib_free.c \
+			$(SRCS)/$(LIB)/lib_check.c \
+			$(SRCS)/$(LIB)/lib_is.c
 #			$(SRCS)/$(LIB)/lib_ \
-			$(SRCS)/$(LIB)/lib_ \
-			$(SRCS)/$(LIB)/lib_ \
 			$(SRCS)/$(LIB)/ \
 			$(SRCS)/$(LIB)/
 			

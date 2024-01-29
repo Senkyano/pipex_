@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:16:48 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/29 15:05:46 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/29 18:27:51 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_lst
 {
-	int				n_fork;
+	pid_t				n_fork;
 	char			**path_cmd;
 	char			**cmd_opt;
 	char			*cmd_find;

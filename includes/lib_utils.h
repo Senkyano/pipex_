@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:20:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/28 12:06:52 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:50:14 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+// IS
+bool	is_space(char c);
+// CHECK
+bool	str_good(char *str);
 // PRINT
 void	print_char(char c, int fd);
 size_t	print_c(char c);

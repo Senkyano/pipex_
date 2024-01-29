@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:17:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/29 15:32:46 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/29 17:54:56 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ static void	child(t_data *pipex, t_lst *cmd, size_t i, char **env)
 	}
 	else if (cmd->n_fork == 0)
 	{
-		cmd_is_find(pipex, cmd);
 		if (i == 0)
 			redirection(pipex, pipex->in_file, pipex->fd[i + 1]);
 		else if (i < ((pipex->n_cmd - 1) * 2))
@@ -94,6 +93,7 @@ static void	child(t_data *pipex, t_lst *cmd, size_t i, char **env)
 		close_pipe(pipex);
 		close(pipex->in_file);
 		close(pipex->out_file);
+		cmd_is_find(pipex, cmd);
 		if (execve(cmd->cmd_find, cmd->cmd_opt, env) == -1)
 		{
 			print_error("execve() ");
