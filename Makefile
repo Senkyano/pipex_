@@ -6,14 +6,14 @@
 #    By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 19:30:36 by rihoy             #+#    #+#              #
-#    Updated: 2024/01/28 20:07:56 by rihoy            ###   ########.fr        #
+#    Updated: 2024/01/29 15:30:15 by rihoy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # **************************************************************************** #
 #Compilateur - Options
 CC = cc
-FLAGS = -Wall -Werror -Wextra -g3 #-fsanitize=address
+FLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 RM = rm -fr
 
 # Couleurs
@@ -68,9 +68,9 @@ FILE_PARS_C =	$(SRCS)/$(PARS)/get_path.c \
 			$(SRCS)/$(PARS)/strucmd.c
 #			$(SRCS)/$(PARS)/lstcmd.c
 
-FILE_EXEC_C =	$(SRCS)/$(EXEC)/gestion_fd.c
-#			$(SRCS)/$(EXEC)/exec_cmd.c \
-			$(SRCS)/$(EXEC)/gestion_pipe.c
+FILE_EXEC_C =	$(SRCS)/$(EXEC)/gestion_fd.c \
+			$(SRCS)/$(EXEC)/transmission_file.c \
+			$(SRCS)/$(EXEC)/access_cmd.c
 
 # Fichier .o
 LIB_O = $(FILE_LIB_C:$(SRCS)/$(LIB)/%.c=$(OBJS)/%.o)

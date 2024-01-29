@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 22:49:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/28 20:13:08 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:17:44 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static t_lst	*info_cmd(t_data *pipex, char *argv)
 	cmd->path_cmd = cmd_in_path(cmd->cmd_opt[0], pipex->path_env);
 	if (!cmd->path_cmd)
 		return (free_split(cmd->cmd_opt), free(cmd), NULL);
+	cmd->cmd_find = NULL;
 	cmd->next = NULL;
 	return (cmd);
 }
@@ -86,7 +87,7 @@ void	do_lst_cmd(t_data *pipex, char **argv, int argc)
 		i = 3;
 		pipex->n_cmd--;
 	}
-	while ((int)i < argc - 2)
+	while ((int)i <= argc - 2)
 	{
 		cmd = info_cmd(pipex, argv[i]);
 		if (!cmd)

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:55:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/28 19:08:29 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:16:44 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int argc, const char **argv, const char **env)
 	do_lst_cmd(&pipex, (char **)argv, argc);
 	access_file(&pipex, (char **)argv, argc);
 	print_lst(pipex.cmd);
-	printf("%ld\n", pipex.n_cmd);
+	// printf("%ld\n", pipex.n_cmd);
+	file_to_file(&pipex, (char **)env);
 	close_data(&pipex, 0);
 	return (0);
 }

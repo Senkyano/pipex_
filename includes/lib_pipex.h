@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:16:48 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/28 18:38:32 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:05:46 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_lst
 	int				n_fork;
 	char			**path_cmd;
 	char			**cmd_opt;
+	char			*cmd_find;
 	struct s_lst	*next;
 } t_lst;
 
@@ -42,5 +43,8 @@ void	close_data(t_data *pipex, int ok);
 
 void	do_lst_cmd(t_data *pipex, char **argv, int argc);
 void	print_lst(t_lst *lst_cmd);
+
+void	file_to_file(t_data *pipex, char **env);
+void	cmd_is_find(t_data *pipex, t_lst *cmd);
 
 #endif
