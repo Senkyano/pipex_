@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:17:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/29 17:54:56 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/30 17:02:19 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 static void	child(t_data *pipex, t_lst *cmd, size_t i, char **env);
 static void	redirection(t_data *pipex, int	in, int out);
+static void	closing_file(t_data *pipex);
 
 void	file_to_file(t_data *pipex, char **env)
 {
@@ -27,23 +28,32 @@ void	file_to_file(t_data *pipex, char **env)
 
 	i = 0;
 	curr_cmd = pipex->cmd;
+	// if (pipex->here_doc == true)
+		
 	while (curr_cmd)
 	{
 		child(pipex, curr_cmd, i, env);
 		curr_cmd = curr_cmd->next;
 		i += 2;
 	}
-	close_pipe(pipex);
-	free(pipex->fd);
-	pipex->fd = NULL;
-	close(pipex->in_file);
-	close(pipex->out_file);
+	closing_file(pipex);
 	curr_cmd = pipex->cmd;
 	while (curr_cmd)
 	{
 		waitpid(curr_cmd->n_fork, NULL, 0);
 		curr_cmd = curr_cmd->next;
 	}
+}
+
+static void	closing_file(t_data *pipex)
+{
+	close_pipe(pipex);
+	free(pipex->fd);
+	pipex->fd = NULL;
+	close(pipex->in_file);
+	close(pipex->out_file);
+	if (pipex->here_doc == true)
+		unlink(".here_doc.tmp");
 }
 
 static void	redirection(t_data *pipex, int in, int out)

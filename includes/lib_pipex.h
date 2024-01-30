@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:16:48 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/29 18:27:51 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/30 16:52:36 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIB_PIPEX_H
 
 # include <stdlib.h>
+# include <stdbool.h>
 
 typedef struct s_lst
 {
@@ -32,8 +33,10 @@ typedef	struct s_data
 	int		out_file;
 	int		*fd;
 	char	**path_env;
+	bool	here_doc;
 } t_data;
 
+void	file_heredoc(t_data *pipex, char *lim);
 void	get_path(t_data *pipex, char **env);
 void	open_pipe(t_data *pipex);
 void	access_file(t_data *pipex, char **argv, int argc);

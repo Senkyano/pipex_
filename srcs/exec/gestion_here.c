@@ -1,53 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_char.c                                         :+:      :+:    :+:   */
+/*   gestion_here.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 17:15:35 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 16:56:24 by rihoy            ###   ########.fr       */
+/*   Created: 2024/01/30 12:04:29 by rihoy             #+#    #+#             */
+/*   Updated: 2024/01/30 17:00:48 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/lib_pipex.h"
 #include "../../includes/lib_utils.h"
-#include <unistd.h>
-#include <stddef.h>
+#include "../../includes/get_next_line.h"
 
-
-size_t	print_c(char c)
+void	file_heredoc(t_data *pipex, char *lim)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	char	*str;
 
-void	print_str(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		print_c(str[i++]);
-}
-
-void	print_error(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		write_fd(str[i++], 2);
-}
-
-void	print_sent(char **str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
+	str = NULL;
+	while (1)
 	{
-		print_str(str[i]);
-		print_str("\n");
-		i++;
+		str = get_next_line(STDIN_FILENO, lim);
+		if (!str || str_equal(str, lim) == true)
+		{
+			if (str != NULL)
+				free(str);
+			return ;
+		}
+		write_str_fd(str, pipex->in_file);
+		free(str);
 	}
 }

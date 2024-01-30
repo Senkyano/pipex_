@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:20:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/29 15:50:14 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/30 17:01:15 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+// FD
+void	write_str_fd(char *str, int fd);
+void	write_fd(char c, int fd);
 // IS
 bool	is_space(char c);
 // CHECK
@@ -31,6 +34,7 @@ size_t	str_len(char *str);
 size_t	sent_len(char **sent);
 // CMP
 bool	str_cmp(char *str, char *str2);
+bool	str_equal(char *str, char *str2);
 bool	str_ncmp(char *str, char *str2, size_t n);
 // JOIN
 char	*str_join(char *str1, char *str2);

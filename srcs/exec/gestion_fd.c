@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/28 19:11:46 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/30 15:55:13 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,27 @@
 
 void	access_file(t_data *pipex, char **argv, int argc)
 {
-	pipex->out_file = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0666);
-	if (pipex->out_file == -1)
-		close_data(pipex, 1);
 	if (str_cmp(argv[1], "here_doc") == false)
 	{
+		pipex->out_file = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0666);
+		if (pipex->out_file == -1)
+			close_data(pipex, 1);
 		if (access(argv[1], F_OK | R_OK) == -1)
 		{
 			print_str("Wrong infile\n");
 			close_data(pipex, 1);
 		}
 		pipex->in_file = open(argv[1], O_RDONLY);
+	}
+	else
+	{
+		pipex->out_file = open(argv[argc - 1], O_RDWR | O_CREAT | O_APPEND, 0666);
+		if (pipex->out_file == -1)
+			close_data(pipex, 1);
+		pipex->in_file = open(".here_doc.tmp", O_CREAT | O_TRUNC | O_RDWR, 0666);
+		if (pipex->in_file == -1)
+			close_data(pipex, 1);
+		pipex->here_doc = true;
 	}
 	open_pipe(pipex);
 }

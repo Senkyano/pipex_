@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:55:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/29 18:26:14 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/30 17:00:30 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	main(int argc, const char **argv, const char **env)
 	get_path(&pipex, (char **)env);
 	do_lst_cmd(&pipex, (char **)argv, argc);
 	access_file(&pipex, (char **)argv, argc);
-	print_lst(pipex.cmd);
-	// printf("%ld\n", pipex.n_cmd);
+	if (pipex.here_doc == true)
+		file_heredoc(&pipex, (char *)argv[2]);
 	file_to_file(&pipex, (char **)env);
 	close_data(&pipex, 0);
 	return (0);
@@ -48,6 +48,7 @@ static void	init_data(t_data *pipex)
 	pipex->out_file = -1;
 	pipex->fd = NULL;
 	pipex->path_env = NULL;
+	pipex->here_doc = false;
 }
 void	free_cmd(t_data *pipex)
 {
@@ -91,12 +92,12 @@ static bool	check_condition(int	argc, const char **argv, const char **env)
 		print_error("env doesn't exist\n");
 		return (false);
 	}
-	if (argc < 5)
+	if (argc < 5 && str_equal((char *)argv[1], "here_doc") == false)
 	{
 		print_error("Not enough arguments\n");
 		return (false);
 	}
-	if (str_cmp((char *)argv[1], "here_doc") == true)
+	if (str_equal((char *)argv[1], "here_doc") == true)
 	{
 		if (argc < 6)
 		{
