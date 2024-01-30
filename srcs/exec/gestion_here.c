@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:04:29 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 17:00:48 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/30 23:18:41 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ void	file_heredoc(t_data *pipex, char *lim)
 	while (1)
 	{
 		str = get_next_line(STDIN_FILENO, lim);
-		if (!str || str_equal(str, lim) == true)
+		if (!str)
 		{
 			if (str != NULL)
 				free(str);
+			close(lim);
 			return ;
 		}
 		write_str_fd(str, pipex->in_file);

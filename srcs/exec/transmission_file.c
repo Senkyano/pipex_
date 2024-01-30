@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:17:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 17:02:19 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/30 23:13:21 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	file_to_file(t_data *pipex, char **env)
 
 	i = 0;
 	curr_cmd = pipex->cmd;
-	// if (pipex->here_doc == true)
-		
 	while (curr_cmd)
 	{
 		child(pipex, curr_cmd, i, env);

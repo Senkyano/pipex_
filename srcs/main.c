@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:55:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 17:00:30 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/30 22:55:21 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ static bool	check_condition(int	argc, const char **argv, const char **env)
 		print_error("env doesn't exist\n");
 		return (false);
 	}
-	if (argc < 5 && str_equal((char *)argv[1], "here_doc") == false)
+	if (argc < 5 && in_lim((char *)argv[1], "here_doc") == false)
 	{
 		print_error("Not enough arguments\n");
 		return (false);
 	}
-	if (str_equal((char *)argv[1], "here_doc") == true)
+	if (in_lim((char *)argv[1], "here_doc") == true)
 	{
 		if (argc < 6)
 		{

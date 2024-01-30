@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:48:44 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 17:15:12 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/30 23:18:00 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ char	*get_next_line(int fd, char *lim)
 	curr = ft_readfile(fd, rest);
 	line = ft_line(curr);
 	rest = ft_aftline(curr);
-	if (str_equal(rest, lim) == true)
-		return (free(rest), NULL);
+	if (in_lim(line, lim) == true)
+	{
+		free(line);
+		free(rest);
+		return (NULL);
+	}
 	return (line);
 }
 
