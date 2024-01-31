@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:17:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 23:13:21 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 15:48:39 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	file_to_file(t_data *pipex, char **env)
 		i += 2;
 	}
 	closing_file(pipex);
+	free(pipex->fd);
+	pipex->fd = NULL;
 	curr_cmd = pipex->cmd;
 	while (curr_cmd)
 	{
@@ -46,24 +48,21 @@ void	file_to_file(t_data *pipex, char **env)
 static void	closing_file(t_data *pipex)
 {
 	close_pipe(pipex);
-	free(pipex->fd);
-	pipex->fd = NULL;
-	close(pipex->in_file);
+	if (pipex->in_file != -1)
+		close(pipex->in_file);
 	close(pipex->out_file);
-	if (pipex->here_doc == true)
-		unlink(".here_doc.tmp");
 }
 
 static void	redirection(t_data *pipex, int in, int out)
 {
 	if (dup2(in, STDIN_FILENO) == -1)
 	{
-		print_error("dup2() ");
+		print_error("dup2() \n");
 		close_data(pipex, 1);
 	}
 	if (dup2(out, STDOUT_FILENO) == -1)
 	{
-		print_error("dup2() ");
+		print_error("dup2() \n");
 		close_data(pipex, 1);
 	}
 }
@@ -72,12 +71,12 @@ static void	out_direction(t_data *pipex, int in, int out)
 {
 	if (dup2(out, STDOUT_FILENO) == -1)
 	{
-		print_error("dup2() ");
+		print_error("dup2() \n");
 		close_data(pipex, 1);
 	}
 	if (dup2(in, STDIN_FILENO) == -1)
 	{
-		print_error("dup2() ");
+		print_error("dup2() \n");
 		close_data(pipex, 1);
 	}
 }
@@ -94,13 +93,11 @@ static void	child(t_data *pipex, t_lst *cmd, size_t i, char **env)
 	{
 		if (i == 0)
 			redirection(pipex, pipex->in_file, pipex->fd[i + 1]);
-		else if (i < ((pipex->n_cmd - 1) * 2))
+		else if (i != 0 && i < ((pipex->n_cmd - 1) * 2))
 			redirection(pipex, pipex->fd[i - 2], pipex->fd[i + 1]);
 		else if (i == ((pipex->n_cmd - 1) * 2))
 			out_direction(pipex, pipex->fd[i - 2], pipex->out_file);
-		close_pipe(pipex);
-		close(pipex->in_file);
-		close(pipex->out_file);
+		closing_file(pipex);
 		cmd_is_find(pipex, cmd);
 		if (execve(cmd->cmd_find, cmd->cmd_opt, env) == -1)
 		{

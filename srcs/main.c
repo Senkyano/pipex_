@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:55:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 22:55:21 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:29:44 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, const char **argv, const char **env)
 	do_lst_cmd(&pipex, (char **)argv, argc);
 	access_file(&pipex, (char **)argv, argc);
 	if (pipex.here_doc == true)
-		file_heredoc(&pipex, (char *)argv[2]);
+		file_heredoc(&pipex);
 	file_to_file(&pipex, (char **)env);
 	close_data(&pipex, 0);
 	return (0);
@@ -87,12 +87,12 @@ void	close_data(t_data *pipex, int ok)
 
 static bool	check_condition(int	argc, const char **argv, const char **env)
 {
-	if (!env)
+	if (!env[0])
 	{
-		print_error("env doesn't exist\n");
+		print_error("Env doesn't exist\n");
 		return (false);
 	}
-	if (argc < 5 && in_lim((char *)argv[1], "here_doc") == false)
+	if (argc < 5)
 	{
 		print_error("Not enough arguments\n");
 		return (false);

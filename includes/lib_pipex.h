@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:16:48 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 16:52:36 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:23:55 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ typedef	struct s_data
 	int		*fd;
 	char	**path_env;
 	bool	here_doc;
+	char	*lim;
 } t_data;
 
-void	file_heredoc(t_data *pipex, char *lim);
+void	file_heredoc(t_data *pipex);
 void	get_path(t_data *pipex, char **env);
 void	open_pipe(t_data *pipex);
 void	access_file(t_data *pipex, char **argv, int argc);

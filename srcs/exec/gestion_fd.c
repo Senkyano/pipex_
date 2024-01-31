@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 23:00:56 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 13:47:57 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ void	access_file(t_data *pipex, char **argv, int argc)
 		pipex->out_file = open(argv[argc - 1], O_RDWR | O_CREAT | O_APPEND, 0666);
 		if (pipex->out_file == -1)
 			close_data(pipex, 1);
-		pipex->in_file = open(".here_doc.tmp", O_CREAT | O_TRUNC | O_RDWR, 0666);
-		if (pipex->in_file == -1)
-			close_data(pipex, 1);
 		pipex->here_doc = true;
+		pipex->lim = argv[2];
 	}
 	open_pipe(pipex);
 }
