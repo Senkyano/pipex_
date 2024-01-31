@@ -6,15 +6,15 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:20:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 22:56:30 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:42:36 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_UTILS_H
 # define LIB_UTILS_H
 
-#include <stddef.h>
-#include <stdbool.h>
+# include <stddef.h>
+# include <stdbool.h>
 
 // FD
 void	write_str_fd(char *str, int fd);

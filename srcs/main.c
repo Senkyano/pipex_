@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:55:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/31 16:29:44 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:39:16 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static bool	check_condition(int	argc, const char **argv, const char **env);
+static bool	check_condition(int argc, const char **argv, const char **env);
 static void	init_data(t_data *pipex);
 
 int	main(int argc, const char **argv, const char **env)
@@ -50,6 +50,7 @@ static void	init_data(t_data *pipex)
 	pipex->path_env = NULL;
 	pipex->here_doc = false;
 }
+
 void	free_cmd(t_data *pipex)
 {
 	t_lst	*curr;
@@ -85,7 +86,7 @@ void	close_data(t_data *pipex, int ok)
 	}
 }
 
-static bool	check_condition(int	argc, const char **argv, const char **env)
+static bool	check_condition(int argc, const char **argv, const char **env)
 {
 	if (!env[0])
 	{

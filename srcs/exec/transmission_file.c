@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:17:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/31 15:48:39 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:39:33 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <unistd.h>
 
 static void	child(t_data *pipex, t_lst *cmd, size_t i, char **env);
-static void	redirection(t_data *pipex, int	in, int out);
+static void	redirection(t_data *pipex, int in, int out);
 static void	closing_file(t_data *pipex);
 
 void	file_to_file(t_data *pipex, char **env)

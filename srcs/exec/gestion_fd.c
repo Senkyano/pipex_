@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/31 13:47:57 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:38:10 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-void	access_file(t_data *pipex, char **argv, int argc)
+void	access_file(t_data *pipex, char **argv, int arg)
 {
+	pipex->out_file = open(argv[arg - 1], O_RDWR | O_CREAT | O_APPEND, 0666);
+	if (pipex->out_file == -1)
+		close_data(pipex, 1);
 	if (in_lim(argv[1], "here_doc") == false)
 	{
-		pipex->out_file = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0666);
-		if (pipex->out_file == -1)
-			close_data(pipex, 1);
 		if (access(argv[1], F_OK | R_OK) == -1)
 		{
 			print_str("Wrong infile\n");
@@ -34,9 +34,6 @@ void	access_file(t_data *pipex, char **argv, int argc)
 	}
 	else
 	{
-		pipex->out_file = open(argv[argc - 1], O_RDWR | O_CREAT | O_APPEND, 0666);
-		if (pipex->out_file == -1)
-			close_data(pipex, 1);
 		pipex->here_doc = true;
 		pipex->lim = argv[2];
 	}

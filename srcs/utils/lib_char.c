@@ -6,14 +6,13 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:15:35 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/30 16:56:24 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:40:00 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lib_utils.h"
 #include <unistd.h>
 #include <stddef.h>
-
 
 size_t	print_c(char c)
 {

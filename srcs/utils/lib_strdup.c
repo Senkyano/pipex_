@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:46:15 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/28 20:05:37 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:40:25 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ char	**lib_sentup(char *str)
 	new_sent = malloc(sizeof(char *) * 2);
 	if (!new_sent)
 		return (NULL);
-	new_sent[0]= lib_strup(str);
+	new_sent[0] = lib_strup(str);
 	if (!new_sent[0])
 		return (free(new_sent), NULL);
 	new_sent[1] = NULL;
 	return (new_sent);
 }
-

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 22:49:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/01/29 16:01:10 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:33:31 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	**cmd_in_path(char *cmd, char **path_env);
 static t_lst	*info_cmd(t_data *pipex, char *argv)
 {
 	t_lst	*cmd;
-	
+
 	cmd = malloc(sizeof(t_lst));
 	if (!cmd)
 		return (NULL);
@@ -68,7 +68,7 @@ static char	**cmd_in_path(char *cmd, char **path_env)
 static void	add_cmd(t_lst **all_cmd, t_lst *cmd)
 {
 	t_lst	*curr;
-	
+
 	curr = *all_cmd;
 	if (!(*all_cmd))
 	{
@@ -102,18 +102,4 @@ void	do_lst_cmd(t_data *pipex, char **argv, int argc)
 	}
 	free_split(pipex->path_env);
 	pipex->path_env = NULL;
-}
-
-void	print_lst(t_lst *lst_cmd)
-{
-	t_lst	*curr;
-
-	curr = lst_cmd;
-	while (curr)
-	{
-		print_sent(curr->path_cmd);
-		printf("\n");
-		print_sent(curr->cmd_opt);
-		curr = curr->next;
-	}
 }
