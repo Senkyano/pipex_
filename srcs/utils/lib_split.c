@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:37:52 by rihoy             #+#    #+#             */
-/*   Updated: 2024/02/01 17:27:27 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/02/20 23:09:39 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ char	**lib_split(char *str, char *set)
 	if (!str)
 		return (NULL);
 	i = 0;
-	printf("%zu\n", nbr_words(str, set));
 	sent = malloc(sizeof(char *) * (nbr_words(str, set) + 1));
 	if (!sent)
 		return (NULL);
