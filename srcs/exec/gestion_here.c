@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:04:29 by rihoy             #+#    #+#             */
-/*   Updated: 2024/02/13 17:34:27 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:58:08 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	file_heredoc(t_data *pipex)
 	char	*str;
 	int		file;
 
-	file = open(".here_doc-tmp.tmp", O_CREAT | O_APPEND | O_WRONLY, 0666);
+	file = open(".here_doc-tmp.tmp", O_CREAT | O_TRUNC | O_WRONLY, 0666);
 	if (file < 0)
 		close_data(pipex, 1);
 	while (1)
